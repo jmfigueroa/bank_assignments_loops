@@ -10,8 +10,7 @@
    updated nor even committed. 
    -  [Force decimal
       places](https://mkyong.com/java/java-display-double-in-2-decimal-points/)
-   -  [Clarification](https://stackoverflow.com/a/8819889 for
-      clarification/correction)
+   -  [Clarification/Correction](https://stackoverflow.com/a/8819889)
  > I didn't end up using either of these methods because I couldn't get them
    to work so I wrote a method to do that instead. Later, I realized that I had been working on a copy which wasn't being saved nor tracked.
    
