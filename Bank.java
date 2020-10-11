@@ -15,39 +15,39 @@ import java.text.DecimalFormat;
 //////////////////////////////// MAIN METHOD //////////////////////////////////
 public class Bank {
   public static void main(String[] args) {
-    // Declaring Scanner and Variables.
     Scanner scnr = new Scanner(System.in);
     User user = new User();
     int optionSelected = 0;
+    int counter = 0;
     clearConsole();
-    System.out.println(
-        "BANK-BANK\nThank you for Banking with us. \nPlease enter name of the account's holder and total balance.");
-
-    // Obtaning User Information Using Scanner
-    System.out.println("\nWelcome back, " + user.getUsername());
-    System.out.print("\nIf this is not you, please type 'N'. \nOtherwise please press any key to proceed\n: ");
-    String response = scnr.nextLine();
-    if (response.equals("N") || response.equals("n")) {
+    System.out.println("BANK-BANK\nThank you for Banking with us. ");
+    wait(2500);
+    while (counter < 3) {
       clearConsole();
-      System.out.print("Please enter your username:");
+      System.out.print("Please enter name of the account's holder username.\nUsername:");
       String newUsername = scnr.nextLine();
-      user.setUsername(newUsername);
-      System.out.print("Please enter your starting balance:");
-      double newBalance = scnr.nextDouble();
-      user.setAccountBalance(newBalance);
+      if (newUsername.equals("Valentin Elizalde")) {
+        user.setUsername(newUsername);
+        System.out.print("Please enter your starting balance:");
+        double newBalance = scnr.nextDouble();
+        user.setAccountBalance(newBalance);
+        clearConsole();
+        System.out.println(" Account holder name: " + user.getUsername());
+        System.out.println(" Account balance: " + user.getAccountBalanceString());
+        System.out.println("Welcome, " + user.getUsername() + ".");
+
+        selectOptions(user, optionSelected, user.getAccountBalance());
+
+      } else {
+        counter++;
+      }
     }
-
-    // Printing Information From Scanner.
-    clearConsole();
-    System.out.println(" Account holder name: " + user.getUsername());
-    System.out.println(" Account balance: " + user.getAccountBalanceString());
-    System.out.println("Welcome, " + user.getUsername() + ".");
-
-    // Run Options Method.
-    selectOptions(user, optionSelected, user.getAccountBalance());
-
-    // Closing Scanner
+    if (counter >= 3) {
+      System.out.println("Sorry, you have exceeded the number of attempts. Now exiting...");
+      System.exit(1);
+    }
     scnr.close();
+
   }
 
   ////////////////////////////////////// METHODS/////////////////////////////////
@@ -130,10 +130,13 @@ public class Bank {
     System.out.flush();
   }
 
-  // Sources:
-  // https://mkyong.com/java/java-display-double-in-2-decimal-points/
-  // https://stackoverflow.com/a/8819889 (for clarification/correction)
-  // public static DecimalFormat usCurrency = new DecimalFormat("#0.00");
+  public static void wait(int ms) {
+    try {
+      Thread.sleep(ms);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 }
 
 class User {
