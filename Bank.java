@@ -40,7 +40,7 @@ public class Bank {
     // Printing Information From Scanner.
     clearConsole();
     System.out.println(" Account holder name: " + user.getUsername());
-    System.out.println(" Account balance: " + usCurrency.format(user.getAccountBalance()));
+    System.out.println(" Account balance: " + user.getAccountBalanceString());
     System.out.println("Welcome, " + user.getUsername() + ".");
 
     // Run Options Method.
@@ -59,7 +59,7 @@ public class Bank {
     while (optionSelected != 3) {
 
       clearConsole();
-      System.out.println("Main Menu \nBalance: " + accountBalance);
+      System.out.println("Main Menu \nBalance: " + user.getAccountBalanceString());
       System.out.println("1. Withdraw");
       System.out.println("2. Deposit");
       System.out.println("3. Exit");
@@ -97,11 +97,10 @@ public class Bank {
       return user.getAccountBalance();
     }
     if (withdrawAmount > user.getAccountBalance()) {
-      System.out.println("Insufficient funds. Account balance: $ " + usCurrency.format(user.getAccountBalance()));
+      System.out.println("Insufficient funds. Account balance: $ " + user.getAccountBalanceString());
     } else {
       user.setAccountBalance(user.getAccountBalance() - withdrawAmount);
-      System.out
-          .println("Account Balance: $" + usCurrency.format(user.getAccountBalance()) + " ($" + withdrawAmount + ")");
+      System.out.println("Account Balance: $" + user.getAccountBalanceString() + " ($" + withdrawAmount + ")");
     }
     return user.getAccountBalance();
   }
@@ -134,7 +133,7 @@ public class Bank {
   // Sources:
   // https://mkyong.com/java/java-display-double-in-2-decimal-points/
   // https://stackoverflow.com/a/8819889 (for clarification/correction)
-  public static DecimalFormat usCurrency = new DecimalFormat("#.00");
+  // public static DecimalFormat usCurrency = new DecimalFormat("#0.00");
 }
 
 class User {
@@ -153,7 +152,24 @@ class User {
     return this.accountBalance;
   }
 
+  public String getAccountBalanceString() {
+    String str = String.valueOf(this.accountBalance);
+    String[] stringArr = str.trim().split("\\.");
+    if (Math.abs(this.accountBalance - Math.floor(this.accountBalance)) > 0) {
+      if (stringArr[1].length() < 2) {
+        System.out.println("PLAY WITH ME");
+        return "$" + stringArr[0] + "." + stringArr[1] + "0";
+      } else {
+        return "$" + stringArr[0] + "." + stringArr[1].substring(0, 2);
+
+      }
+    } else {
+      return "$" + stringArr[0] + ".00";
+    }
+  }
+
   public void setAccountBalance(double newAccountBalance) {
     this.accountBalance = newAccountBalance;
   }
+
 }
