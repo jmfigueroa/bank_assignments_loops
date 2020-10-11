@@ -15,4 +15,5 @@
  > I didn't end up using either of these methods because I couldn't get them
    to work so I wrote a method to do that instead. Later, I realized that I had been working on a copy which wasn't being
    
-   ![homer is smrt](http://www.quickmeme.com/img/38/383ecc8afd8d21a502ed92ebfcfc060a615a644993bad9b127755f7c60d54582.jpg?s=100)
+
+<img src="http://www.quickmeme.com/img/38/383ecc8afd8d21a502ed92ebfcfc060a615a644993bad9b127755f7c60d54582.jpg" width="100" />
