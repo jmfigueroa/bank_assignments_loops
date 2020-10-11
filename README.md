@@ -1,9 +1,9 @@
 # Bank Assignment (loops)
 
 ## Resources Used
-     ### How to clear console
-     -  [Clear Console](https://stackoverflow.com/a/10241460)
-     -  [ANSI Codes](https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html)
+   ### How to clear console
+   -  [Clear Console](https://stackoverflow.com/a/10241460)
+   -  [ANSI Codes](https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html)
         -  \033[H - moves cursor to top left
         -  \033[2J - clears screen
    ### How to force decimal places to print
